@@ -67,7 +67,6 @@ const Nav = () => {
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
   const [navDuration, setNavDuration] = useState(0.35);
-
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -97,8 +96,8 @@ const Nav = () => {
   }, [isOpen]);
 
   return (
-    <>
-      <motion.nav
+    <nav>
+      <motion.div
         variants={navVariants}
         initial="expanded"
         animate={isScrolled ? "collapsed" : "expanded"}
@@ -106,7 +105,7 @@ const Nav = () => {
           duration: navDuration,
           ease: "easeInOut",
         }}
-        className="fixed left-0 z-50 bg-black overflow-hidden items-center shadow-2xl origin-right flex"
+        className="fixed left-0 z-50 bg-black overflow-hidden items-center shadow-2xl origin-right hidden md:flex"
       >
         <motion.div
           variants={contentVariants}
@@ -133,23 +132,22 @@ const Nav = () => {
 
           <DarkModeToggle />
         </motion.div>
-
-        <motion.div
-          variants={menuIconVariants}
-          animate={isScrolled ? "collapsed" : "expanded"}
-          transition={{
-            duration: 0.1,
-            ease: "easeOut",
-            delay: isScrolled ? navDuration : 0,
-          }}
-          className="absolute flex h-9 w-9 items-center justify-center text-white"
-        >
-          <MenuToggle
-            isOpen={isOpen}
-            onMenuToggle={() => setIsOpen((v) => !v)}
-          />
-        </motion.div>
-      </motion.nav>
+      </motion.div>
+      <motion.div
+        variants={menuIconVariants}
+        animate={isScrolled ? "collapsed" : "expanded"}
+        transition={{
+          duration: 0.1,
+          ease: "easeOut",
+          delay: isScrolled ? navDuration : 0,
+        }}
+        className="hidden fixed top-4 left-[calc(100vw-79px)] md:flex h-9 w-9 items-center justify-center text-white z-50"
+      >
+        <MenuToggle isOpen={isOpen} onMenuToggle={() => setIsOpen((v) => !v)} />
+      </motion.div>
+      <div className="md:hidden fixed top-4 left-[calc(100vw-79px)] flex h-9 w-9 items-center justify-center text-white z-50">
+        <MenuToggle isOpen={isOpen} onMenuToggle={() => setIsOpen((v) => !v)} />
+      </div>
       <AnimatePresence>
         {isOpen && (
           <MenuPortal>
@@ -163,7 +161,7 @@ const Nav = () => {
           </MenuPortal>
         )}
       </AnimatePresence>
-    </>
+    </nav>
   );
 };
 

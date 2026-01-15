@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { Menu as MenuIcon, X } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 
 type MenuToggleProps = {
@@ -11,7 +12,7 @@ type MenuToggleProps = {
 
 const MenuToggle = ({ isOpen, onMenuToggle }: MenuToggleProps) => {
   return (
-    <Button size="icon" onClick={onMenuToggle} asChild>
+    <Button size="icon" onClick={onMenuToggle} className="overflow-hidden">
       <motion.div
         animate={{ rotate: isOpen ? -180 : 0 }}
         transition={{ duration: 0.4 }}

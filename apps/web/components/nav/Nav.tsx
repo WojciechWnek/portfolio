@@ -10,8 +10,9 @@ import {
   useMotionValueEvent,
   AnimatePresence,
 } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { Menu as MenuIcon, X } from "lucide-react";
 import { Button } from "../ui/button";
+import Menu from "./menu/Menu";
 
 const menuItems = [
   { label: "Home", link: "#home" },
@@ -122,91 +123,95 @@ const Nav = () => {
       scale: 0.6,
     },
   };
+
   console.log(isOpen);
   return (
-    <motion.nav
-      variants={navVariants}
-      initial="expanded"
-      animate={isScrolled ? "collapsed" : "expanded"}
-      transition={{
-        duration: navDuration,
-        ease: "easeInOut",
-      }}
-      className="fixed left-0 z-50 bg-black overflow-hidden flex items-center shadow-2xl origin-right"
-    >
-      <motion.div
-        variants={contentVariants}
+    <>
+      <motion.nav
+        variants={navVariants}
+        initial="expanded"
         animate={isScrolled ? "collapsed" : "expanded"}
         transition={{
           duration: navDuration,
           ease: "easeInOut",
         }}
-        style={{
-          transformOrigin: "right center",
-        }}
-        className="relative z-10 w-full flex items-center justify-between gap-8 px-8 text-white text-sm font-medium whitespace-nowrap before:content-[''] before:w-9"
+        className="fixed left-0 z-50 bg-black overflow-hidden flex items-center shadow-2xl origin-right"
       >
-        <ul className="flex gap-8">
-          {menuItems.map((item) => (
-            <motion.li key={item.label}>
-              <a
-                href={item.link}
-                className="hover:opacity-70 transition-opacity"
-              >
-                {item.label}
-              </a>
-            </motion.li>
-          ))}
-        </ul>
-
-        <DarkModeToggle />
-      </motion.div>
-
-      <motion.div
-        variants={menuIconVariants}
-        animate={isScrolled ? "collapsed" : "expanded"}
-        transition={{
-          duration: 0.1,
-          ease: "easeOut",
-          delay: isScrolled ? navDuration : 0,
-        }}
-        className="absolute flex h-9 w-9 items-center justify-center text-white"
-      >
-        <Button size="icon" onClick={() => setIsOpen((v) => !v)}>
-          <motion.div
-            initial="initial"
-            animate="animate"
-            variants={iconWrapperVariants}
-            key={isOpen ? "open" : "closed"} // 🔥 wymusza restart animacji
-            className="flex items-center justify-center"
-          >
-            <AnimatePresence mode="wait">
-              {isOpen ? (
-                <motion.span
-                  key="x"
-                  variants={iconVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
+        <motion.div
+          variants={contentVariants}
+          animate={isScrolled ? "collapsed" : "expanded"}
+          transition={{
+            duration: navDuration,
+            ease: "easeInOut",
+          }}
+          style={{
+            transformOrigin: "right center",
+          }}
+          className="relative z-10 w-full flex items-center justify-between gap-8 px-8 text-white text-sm font-medium whitespace-nowrap before:content-[''] before:w-9"
+        >
+          <ul className="flex gap-8">
+            {menuItems.map((item) => (
+              <motion.li key={item.label}>
+                <a
+                  href={item.link}
+                  className="hover:opacity-70 transition-opacity"
                 >
-                  <X size={16} />
-                </motion.span>
-              ) : (
-                <motion.span
-                  key="menu"
-                  variants={iconVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                >
-                  <Menu size={16} />
-                </motion.span>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        </Button>
-      </motion.div>
-    </motion.nav>
+                  {item.label}
+                </a>
+              </motion.li>
+            ))}
+          </ul>
+
+          <DarkModeToggle />
+        </motion.div>
+
+        <motion.div
+          variants={menuIconVariants}
+          animate={isScrolled ? "collapsed" : "expanded"}
+          transition={{
+            duration: 0.1,
+            ease: "easeOut",
+            delay: isScrolled ? navDuration : 0,
+          }}
+          className="absolute flex h-9 w-9 items-center justify-center text-white"
+        >
+          <Button size="icon" onClick={() => setIsOpen((v) => !v)}>
+            <motion.div
+              initial="initial"
+              animate="animate"
+              variants={iconWrapperVariants}
+              key={isOpen ? "open" : "closed"} // 🔥 wymusza restart animacji
+              className="flex items-center justify-center"
+            >
+              <AnimatePresence mode="wait">
+                {isOpen ? (
+                  <motion.span
+                    key="x"
+                    variants={iconVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
+                    <X size={16} />
+                  </motion.span>
+                ) : (
+                  <motion.span
+                    key="menu"
+                    variants={iconVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
+                    <MenuIcon size={16} />
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          </Button>
+        </motion.div>
+      </motion.nav>
+      <AnimatePresence>{isOpen && <Menu />}</AnimatePresence>
+    </>
   );
 };
 

@@ -46,9 +46,10 @@ const Nav = () => {
     else setNavDuration(0.35);
   });
 
-  /* ===============================
-     BLACK HOLE VARIANTS
-  =============================== */
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsOpen((prev) => (prev && latest <= 10 ? false : prev));
+  });
+
   const navVariants = {
     expanded: {
       width: "calc(100vw - 79px)",
@@ -124,7 +125,6 @@ const Nav = () => {
     },
   };
 
-  console.log(isOpen);
   return (
     <>
       <motion.nav

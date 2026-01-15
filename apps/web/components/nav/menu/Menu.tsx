@@ -1,8 +1,5 @@
-import React, { useState } from "react";
-import styles from "./style.module.scss";
-import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
 import Curve from "./Curve";
+import { motion } from "motion/react";
 
 const navItems = [
   {
@@ -32,10 +29,7 @@ const menuSlide = {
   },
 };
 
-function Menu() {
-  const pathname = usePathname();
-  const [selectedIndicator, setSelectedIndicator] = useState(pathname);
-
+const Menu = () => {
   return (
     <motion.div
       variants={menuSlide}
@@ -45,12 +39,7 @@ function Menu() {
       className="fixed right-0 top-0 h-screen bg-black text-white"
     >
       <div className="box-border h-full p-25 flex flex-col justify-between">
-        <div
-          onMouseLeave={() => {
-            setSelectedIndicator(pathname);
-          }}
-          className="flex flex-col text-[56px] gap-3 mt-20"
-        >
+        <div className="flex flex-col text-[56px] gap-3 mt-20">
           <div className="border-b border-[rgb(153,153,153)] uppercase text-sm mb-10">
             <p>Navigation</p>
           </div>
@@ -58,9 +47,9 @@ function Menu() {
             return (
               <a
                 key={index}
-                data={{ ...data, index }}
-                isActive={selectedIndicator == data.href}
-                setSelectedIndicator={setSelectedIndicator}
+                // data={{ ...data, index }}
+                // isActive={selectedIndicator == data.href}
+                // setSelectedIndicator={setSelectedIndicator}
                 className="no-underline text-white font-light"
               ></a>
             );
@@ -70,6 +59,6 @@ function Menu() {
       <Curve />
     </motion.div>
   );
-}
+};
 
 export default Menu;

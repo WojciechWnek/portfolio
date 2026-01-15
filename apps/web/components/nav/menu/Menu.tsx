@@ -43,6 +43,7 @@ export const slide = {
     },
   }),
 };
+
 type MenuProps = {
   onNavClick: () => void;
 };
@@ -54,7 +55,7 @@ const Menu = ({ onNavClick }: MenuProps) => {
       initial="initial"
       animate="enter"
       exit="exit"
-      className="fixed right-0 top-0 h-screen bg-black text-white"
+      className="fixed top-0 right-0 h-screen w-screen md:w-96 bg-black text-white"
     >
       <div className="box-border h-full p-25 flex flex-col justify-between">
         <div className="flex flex-col text-[56px] gap-3 mt-20">

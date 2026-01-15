@@ -13,6 +13,7 @@ import DarkModeToggle from "./menu/DarkModeToggle";
 import Menu from "./menu/Menu";
 import MenuToggle from "./menu/MenuToggle";
 import NavLink from "./menu/NavLink";
+import MenuPortal from "./menu/MenuPortal";
 
 const menuItems = [
   { label: "Home", link: "#home" },
@@ -88,6 +89,13 @@ const Nav = () => {
     setIsOpen((prev) => (prev && latest <= 10 ? false : prev));
   });
 
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
     <>
       <motion.nav
@@ -98,7 +106,7 @@ const Nav = () => {
           duration: navDuration,
           ease: "easeInOut",
         }}
-        className="fixed left-0 z-50 bg-black overflow-hidden flex items-center shadow-2xl origin-right"
+        className="fixed left-0 z-50 bg-black overflow-hidden items-center shadow-2xl origin-right flex"
       >
         <motion.div
           variants={contentVariants}
@@ -143,7 +151,17 @@ const Nav = () => {
         </motion.div>
       </motion.nav>
       <AnimatePresence>
-        {isOpen && <Menu onNavClick={() => setIsOpen(false)} />}
+        {isOpen && (
+          <MenuPortal>
+            <div className="fixed inset-0 z-40">
+              <div
+                onClick={() => setIsOpen(false)}
+                className="absolute inset-0"
+              />
+              <Menu onNavClick={() => setIsOpen(false)} />
+            </div>
+          </MenuPortal>
+        )}
       </AnimatePresence>
     </>
   );

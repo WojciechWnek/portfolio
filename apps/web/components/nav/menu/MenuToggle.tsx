@@ -11,7 +11,7 @@ type MenuToggleProps = {
 
 const MenuToggle = ({ isOpen, onMenuToggle }: MenuToggleProps) => {
   return (
-    <Button size="icon" onClick={onMenuToggle}>
+    <Button size="icon" onClick={onMenuToggle} asChild>
       <motion.div
         animate={{ rotate: isOpen ? -180 : 0 }}
         transition={{ duration: 0.4 }}

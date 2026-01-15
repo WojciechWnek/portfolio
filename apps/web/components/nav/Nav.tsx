@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
-import DarkModeToggle from "./DarkModeToggle";
 import {
   motion,
   useScroll,
@@ -10,9 +8,11 @@ import {
   useMotionValueEvent,
   AnimatePresence,
 } from "motion/react";
-import { Menu as MenuIcon, X } from "lucide-react";
-import { Button } from "../ui/button";
+
+import DarkModeToggle from "./menu/DarkModeToggle";
 import Menu from "./menu/Menu";
+import MenuToggle from "./menu/MenuToggle";
+import NavLink from "./menu/NavLink";
 
 const menuItems = [
   { label: "Home", link: "#home" },
@@ -22,6 +22,44 @@ const menuItems = [
   { label: "About", link: "#about" },
   { label: "Contact", link: "#contact" },
 ];
+
+const navVariants = {
+  expanded: {
+    width: "calc(100vw - 79px)",
+    height: 64,
+    borderRadius: 16,
+    x: 32,
+    y: 8,
+  },
+  collapsed: {
+    width: 36,
+    height: 36,
+    borderRadius: 8,
+    x: "calc(100vw - 79px)",
+    y: 16,
+  },
+};
+
+const contentVariants = {
+  expanded: {
+    scaleX: 1,
+    x: 0,
+  },
+  collapsed: {
+    scaleX: 0,
+  },
+};
+
+const menuIconVariants = {
+  expanded: {
+    scale: 0,
+    pointerEvents: "none",
+  },
+  collapsed: {
+    scale: 1,
+    pointerEvents: "auto",
+  },
+};
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -50,81 +88,6 @@ const Nav = () => {
     setIsOpen((prev) => (prev && latest <= 10 ? false : prev));
   });
 
-  const navVariants = {
-    expanded: {
-      width: "calc(100vw - 79px)",
-      height: 64,
-      borderRadius: 16,
-      x: 32,
-      y: 8,
-    },
-    collapsed: {
-      width: 36,
-      height: 36,
-      borderRadius: 8,
-      x: "calc(100vw - 79px)",
-      y: 16,
-    },
-  };
-
-  const contentVariants = {
-    expanded: {
-      scaleX: 1,
-      x: 0,
-    },
-    collapsed: {
-      scaleX: 0,
-    },
-  };
-
-  const menuIconVariants = {
-    expanded: {
-      scale: 0,
-      pointerEvents: "none",
-    },
-    collapsed: {
-      scale: 1,
-      pointerEvents: "auto",
-    },
-  };
-
-  const menuIconStateVariants = {
-    close: {
-      rotate: 180,
-    },
-    open: {
-      rotate: -180,
-    },
-  };
-
-  const iconWrapperVariants = {
-    initial: {
-      rotate: 0,
-    },
-    animate: {
-      rotate: isOpen ? 180 : -180,
-      transition: {
-        duration: 0.4,
-        ease: "easeInOut",
-      },
-    },
-  };
-
-  const iconVariants = {
-    initial: {
-      opacity: 0,
-      scale: 0.6,
-    },
-    animate: {
-      opacity: 1,
-      scale: 1,
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.6,
-    },
-  };
-
   return (
     <>
       <motion.nav
@@ -151,14 +114,12 @@ const Nav = () => {
         >
           <ul className="flex gap-8">
             {menuItems.map((item) => (
-              <motion.li key={item.label}>
-                <a
-                  href={item.link}
-                  className="hover:opacity-70 transition-opacity"
-                >
-                  {item.label}
-                </a>
-              </motion.li>
+              <NavLink
+                key={item.label}
+                label={item.label}
+                link={item.link}
+                onNavClick={() => setIsOpen(false)}
+              />
             ))}
           </ul>
 
@@ -175,42 +136,15 @@ const Nav = () => {
           }}
           className="absolute flex h-9 w-9 items-center justify-center text-white"
         >
-          <Button size="icon" onClick={() => setIsOpen((v) => !v)}>
-            <motion.div
-              initial="initial"
-              animate="animate"
-              variants={iconWrapperVariants}
-              key={isOpen ? "open" : "closed"} // 🔥 wymusza restart animacji
-              className="flex items-center justify-center"
-            >
-              <AnimatePresence mode="wait">
-                {isOpen ? (
-                  <motion.span
-                    key="x"
-                    variants={iconVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                  >
-                    <X size={16} />
-                  </motion.span>
-                ) : (
-                  <motion.span
-                    key="menu"
-                    variants={iconVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                  >
-                    <MenuIcon size={16} />
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          </Button>
+          <MenuToggle
+            isOpen={isOpen}
+            onMenuToggle={() => setIsOpen((v) => !v)}
+          />
         </motion.div>
       </motion.nav>
-      <AnimatePresence>{isOpen && <Menu />}</AnimatePresence>
+      <AnimatePresence>
+        {isOpen && <Menu onNavClick={() => setIsOpen(false)} />}
+      </AnimatePresence>
     </>
   );
 };

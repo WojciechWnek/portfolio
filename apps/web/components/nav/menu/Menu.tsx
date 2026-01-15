@@ -1,35 +1,53 @@
-import Curve from "./Curve";
-import { motion } from "motion/react";
+import { cubicBezier, motion } from "motion/react";
 
-const navItems = [
-  {
-    title: "Home",
-    href: "/",
-  },
-  {
-    title: "Work",
-    href: "/work",
-  },
-  {
-    title: "About",
-    href: "/about",
-  },
-  {
-    title: "Contact",
-    href: "/contact",
-  },
+import Curve from "./Curve";
+import NavLink from "./NavLink";
+
+const menuItems = [
+  { label: "Home", link: "#home" },
+  { label: "Experience", link: "#experience" },
+  { label: "Projects", link: "#projects" },
+  { label: "Stack", link: "#stack" },
+  { label: "About", link: "#about" },
+  { label: "Contact", link: "#contact" },
 ];
 
 const menuSlide = {
   initial: { x: "calc(100% + 100px)" },
-  enter: { x: "0", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } },
+  enter: {
+    x: "0",
+    transition: { duration: 0.6, ease: cubicBezier(0.76, 0, 0.24, 1) },
+  },
   exit: {
     x: "calc(100% + 100px)",
-    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+    transition: { duration: 0.6, ease: cubicBezier(0.76, 0, 0.24, 1) },
   },
 };
 
-const Menu = () => {
+export const slide = {
+  initial: { x: 80 },
+  enter: (i: number) => ({
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: cubicBezier(0.76, 0, 0.24, 1),
+      delay: 0.05 * i,
+    },
+  }),
+  exit: (i: number) => ({
+    x: 80,
+    transition: {
+      duration: 0.8,
+      ease: cubicBezier(0.76, 0, 0.24, 1),
+      delay: 0.05 * i,
+    },
+  }),
+};
+type MenuProps = {
+  onNavClick: () => void;
+};
+
+const Menu = ({ onNavClick }: MenuProps) => {
   return (
     <motion.div
       variants={menuSlide}
@@ -40,20 +58,24 @@ const Menu = () => {
     >
       <div className="box-border h-full p-25 flex flex-col justify-between">
         <div className="flex flex-col text-[56px] gap-3 mt-20">
-          <div className="border-b border-[rgb(153,153,153)] uppercase text-sm mb-10">
-            <p>Navigation</p>
-          </div>
-          {navItems.map((data, index) => {
-            return (
-              <a
-                key={index}
-                // data={{ ...data, index }}
-                // isActive={selectedIndicator == data.href}
-                // setSelectedIndicator={setSelectedIndicator}
-                className="no-underline text-white font-light"
-              ></a>
-            );
-          })}
+          <ul className="flex flex-col gap-8">
+            {menuItems.map((item, index) => (
+              <motion.li
+                key={item.label}
+                custom={index}
+                variants={slide}
+                initial="initial"
+                animate="enter"
+                exit="exit"
+              >
+                <NavLink
+                  label={item.label}
+                  link={item.link}
+                  onNavClick={onNavClick}
+                />
+              </motion.li>
+            ))}
+          </ul>
         </div>
       </div>
       <Curve />

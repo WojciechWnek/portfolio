@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ThemeProvider } from "@/app/providers"
+import { ThemeProvider } from "@/app/providers";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import Nav from "@/components/nav/Nav";
@@ -31,17 +31,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-full  antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Nav />
           {children}
         </ThemeProvider>
       </body>
-    </html >
+    </html>
   );
 }

@@ -2,40 +2,39 @@
 
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 
 import { Button } from "../../ui/button";
 
-export default function DarkModeToggle() {
+const DarkModeToggle = () => {
   const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const { setTheme, resolvedTheme } = useTheme();
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      setTheme(prefersDark ? "dark" : "light");
-    }
+  useEffect(() => setMounted(true), []);
 
-    setMounted(true);
-  }, []);
+  if (!mounted) {
+    return (
+      <Button onClick={() => setTheme("dark")} size="icon" variant="toggle">
+        <Moon />
+      </Button>
+    );
+  }
 
-  if (!mounted) return null;
+  if (resolvedTheme === "dark") {
+    return (
+      <Button onClick={() => setTheme("light")} size="icon" variant="toggle">
+        <Sun />
+      </Button>
+    );
+  }
 
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.remove(theme);
-    document.documentElement.classList.add(newTheme);
-  };
+  if (resolvedTheme === "light") {
+    return (
+      <Button onClick={() => setTheme("dark")} size="icon" variant="toggle">
+        <Moon />
+      </Button>
+    );
+  }
+};
 
-  return (
-    <Button onClick={toggleTheme} size="icon">
-      {theme === "light" ? <Moon /> : <Sun />}
-    </Button>
-  );
-}
+export default DarkModeToggle;

@@ -105,7 +105,7 @@ const Nav = () => {
           duration: navDuration,
           ease: "easeInOut",
         }}
-        className="fixed left-0 z-50 bg-black overflow-hidden items-center shadow-2xl origin-right hidden md:flex"
+        className="fixed left-0 z-50 bg-card overflow-hidden items-center shadow-2xl origin-right hidden md:flex"
       >
         <motion.div
           variants={contentVariants}
@@ -117,7 +117,7 @@ const Nav = () => {
           style={{
             transformOrigin: "right center",
           }}
-          className="relative z-10 w-full flex items-center justify-between gap-8 px-8 text-white text-sm font-medium whitespace-nowrap before:content-[''] before:w-9"
+          className="relative z-10 w-full flex items-center justify-between gap-8 px-8 text-sm font-medium whitespace-nowrap before:content-[''] before:w-9"
         >
           <ul className="flex gap-8">
             {menuItems.map((item) => (
@@ -134,6 +134,7 @@ const Nav = () => {
         </motion.div>
       </motion.div>
       <motion.div
+        initial={false}
         variants={menuIconVariants}
         animate={isScrolled ? "collapsed" : "expanded"}
         transition={{
@@ -141,11 +142,11 @@ const Nav = () => {
           ease: "easeOut",
           delay: isScrolled ? navDuration : 0,
         }}
-        className="hidden fixed top-4 left-[calc(100vw-79px)] md:flex h-9 w-9 items-center justify-center text-white z-50"
+        className="hidden fixed top-4 left-[calc(100vw-79px)] md:flex h-9 w-9 items-center justify-center z-50"
       >
         <MenuToggle isOpen={isOpen} onMenuToggle={() => setIsOpen((v) => !v)} />
       </motion.div>
-      <div className="md:hidden fixed top-4 left-[calc(100vw-79px)] flex h-9 w-9 items-center justify-center text-white z-50">
+      <div className="md:hidden fixed top-4 left-[calc(100vw-79px)] flex h-9 w-9 items-center justify-center z-50">
         <MenuToggle isOpen={isOpen} onMenuToggle={() => setIsOpen((v) => !v)} />
       </div>
       <AnimatePresence>

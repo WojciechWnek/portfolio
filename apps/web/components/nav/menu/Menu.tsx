@@ -3,6 +3,9 @@ import { cubicBezier, motion } from "motion/react";
 import Curve from "./Curve";
 import NavLink from "./NavLink";
 import DarkModeToggle from "./DarkModeToggle";
+import { Github, LinkedinIcon } from "lucide-react";
+import IconLink from "./IconLink";
+import { Button } from "@/components/ui/button";
 
 const menuItems = [
   { label: "Home", link: "#home" },
@@ -11,6 +14,19 @@ const menuItems = [
   { label: "Stack", link: "#stack" },
   { label: "About", link: "#about" },
   { label: "Contact", link: "#contact" },
+];
+
+const socialItems = [
+  {
+    icon: <Github size={16} />,
+    label: "Github",
+    link: "https://github.com/WojciechWnek",
+  },
+  {
+    icon: <LinkedinIcon size={16} />,
+    label: "LinkedIn",
+    link: "https://www.linkedin.com/in/wojciech-wnek/",
+  },
 ];
 
 const menuSlide = {
@@ -56,11 +72,10 @@ const Menu = ({ onNavClick }: MenuProps) => {
       initial="initial"
       animate="enter"
       exit="exit"
-      className="fixed top-0 right-0 h-screen w-screen md:w-96 bg-card text-foreground"
+      className="fixed top-0 right-0 h-screen w-screen md:w-md bg-card text-foreground"
     >
-      <div className="box-border h-full p-25 flex flex-col justify-between">
-        <div className="flex flex-col text-[56px] gap-3 mt-20">
-          <DarkModeToggle />
+      <div className="border-box h-full p-20 md:p-25 flex flex-col justify-between">
+        <div className="flex flex-col text-4xl md:text-5xl gap-3">
           <ul className="flex flex-col gap-8">
             {menuItems.map((item, index) => (
               <motion.li
@@ -80,6 +95,20 @@ const Menu = ({ onNavClick }: MenuProps) => {
             ))}
           </ul>
         </div>
+        <ul className="flex justify-between items-center">
+          {socialItems.map((item, index) => (
+            <li key={item.label}>
+              <Button size="icon" variant="toggle">
+                <IconLink label={item.label} link={item.link}>
+                  {item.icon}
+                </IconLink>
+              </Button>
+            </li>
+          ))}
+          <li>
+            <DarkModeToggle />
+          </li>
+        </ul>
       </div>
       <Curve />
     </motion.div>

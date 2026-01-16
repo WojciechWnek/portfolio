@@ -37,7 +37,7 @@ const navVariants = {
     height: 36,
     borderRadius: 8,
     x: "calc(100vw - 79px)",
-    y: 16,
+    y: 20,
   },
 };
 
@@ -142,11 +142,11 @@ const Nav = () => {
           ease: "easeOut",
           delay: isScrolled ? navDuration : 0,
         }}
-        className="hidden fixed top-4 left-[calc(100vw-79px)] md:flex h-9 w-9 items-center justify-center z-50"
+        className="hidden fixed top-5 left-[calc(100vw-79px)] md:flex h-9 w-9 items-center justify-center z-50"
       >
         <MenuToggle isOpen={isOpen} onMenuToggle={() => setIsOpen((v) => !v)} />
       </motion.div>
-      <div className="md:hidden fixed top-4 left-[calc(100vw-79px)] flex h-9 w-9 items-center justify-center z-50">
+      <div className="md:hidden fixed top-5 left-[calc(100vw-79px)] flex h-9 w-9 items-center justify-center z-50">
         <MenuToggle isOpen={isOpen} onMenuToggle={() => setIsOpen((v) => !v)} />
       </div>
       <AnimatePresence>

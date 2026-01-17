@@ -18,12 +18,12 @@ const menuItems = [
 
 const socialItems = [
   {
-    icon: <Github size={16} />,
+    icon: Github,
     label: "Github",
     link: "https://github.com/WojciechWnek",
   },
   {
-    icon: <LinkedinIcon size={16} />,
+    icon: LinkedinIcon,
     label: "LinkedIn",
     link: "https://www.linkedin.com/in/wojciech-wnek/",
   },
@@ -96,11 +96,15 @@ const Menu = ({ onNavClick }: MenuProps) => {
           </ul>
         </div>
         <ul className="flex justify-between items-center">
-          {socialItems.map((item, index) => (
-            <li key={item.label}>
-              <Button size="icon" variant="toggle">
-                <IconLink label={item.label} link={item.link}>
-                  {item.icon}
+          {socialItems.map(({ icon: Icon, label, link }) => (
+            <li key={label}>
+              <Button
+                size="icon"
+                variant="toggle"
+                className="hover:opacity-70 transition-opacity"
+              >
+                <IconLink label={label} link={link}>
+                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
                 </IconLink>
               </Button>
             </li>

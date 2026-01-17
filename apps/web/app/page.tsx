@@ -1,19 +1,17 @@
-import About from "@/components/sections/About";
+import AboutAndStack from "@/components/sections/AboutAndStack";
 import Contact from "@/components/sections/Contact";
 import Experience from "@/components/sections/Experience";
 import Home from "@/components/sections/Home";
-import Projects from "@/components/sections/Projects";
-import Stack from "@/components/sections/Stack";
+import SelectedProjects from "@/components/sections/SelectedProjects";
 
 export default function Page() {
-	return (
-		<>
-			<Home />
-			<Experience />
-			<Projects />
-			<Stack />
-			<About />
-			<Contact />
-		</>
-	);
+  return (
+    <>
+      <Home />
+      <AboutAndStack />
+      <Experience />
+      <SelectedProjects />
+      <Contact />
+    </>
+  );
 }

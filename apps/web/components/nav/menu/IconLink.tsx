@@ -13,11 +13,7 @@ const IconLink = ({
   link,
   children,
 }: PropsWithChildren<IconLinkProps>) => (
-  <Link
-    href={link}
-    className="hover:opacity-70 transition-opacity"
-    aria-label={label}
-  >
+  <Link href={link} aria-label={label} target="_blank">
     <>{children}</>
   </Link>
 );

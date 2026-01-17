@@ -14,7 +14,12 @@ const DarkModeToggle = () => {
 
   if (!mounted) {
     return (
-      <Button onClick={() => setTheme("dark")} size="icon" variant="toggle">
+      <Button
+        onClick={() => setTheme("dark")}
+        size="icon"
+        variant="toggle"
+        className="hover:opacity-70 transition-opacity"
+      >
         <Moon />
       </Button>
     );
@@ -22,7 +27,12 @@ const DarkModeToggle = () => {
 
   if (resolvedTheme === "dark") {
     return (
-      <Button onClick={() => setTheme("light")} size="icon" variant="toggle">
+      <Button
+        onClick={() => setTheme("light")}
+        size="icon"
+        variant="toggle"
+        className="hover:opacity-70 transition-opacity"
+      >
         <Sun />
       </Button>
     );
@@ -30,7 +40,12 @@ const DarkModeToggle = () => {
 
   if (resolvedTheme === "light") {
     return (
-      <Button onClick={() => setTheme("dark")} size="icon" variant="toggle">
+      <Button
+        onClick={() => setTheme("dark")}
+        size="icon"
+        variant="toggle"
+        className="hover:opacity-70 transition-opacity"
+      >
         <Moon />
       </Button>
     );

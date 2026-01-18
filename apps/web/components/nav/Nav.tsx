@@ -1,13 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  motion,
-  useScroll,
-  useVelocity,
-  useMotionValueEvent,
-  AnimatePresence,
-} from "motion/react";
+import { motion, useScroll, useVelocity, useMotionValueEvent, AnimatePresence } from "motion/react";
 
 import DarkModeToggle from "./menu/DarkModeToggle";
 import Menu from "./menu/Menu";
@@ -17,10 +11,9 @@ import MenuPortal from "./menu/MenuPortal";
 
 const menuItems = [
   { label: "Home", link: "#home" },
+  { label: "About", link: "#about" },
   { label: "Experience", link: "#experience" },
   { label: "Projects", link: "#projects" },
-  { label: "Stack", link: "#stack" },
-  { label: "About", link: "#about" },
   { label: "Contact", link: "#contact" },
 ];
 
@@ -105,7 +98,7 @@ const Nav = () => {
           duration: navDuration,
           ease: "easeInOut",
         }}
-        className="fixed left-0 z-50 bg-card overflow-hidden items-center shadow-2xl origin-right hidden md:flex"
+        className="bg-card fixed left-0 z-50 hidden origin-right items-center overflow-hidden shadow-2xl md:flex"
       >
         <motion.div
           variants={contentVariants}
@@ -117,7 +110,7 @@ const Nav = () => {
           style={{
             transformOrigin: "right center",
           }}
-          className="relative z-10 w-full flex items-center justify-between gap-8 px-8 text-sm font-medium whitespace-nowrap before:content-[''] before:w-9"
+          className="relative z-10 flex w-full items-center justify-between gap-8 px-8 text-sm font-medium whitespace-nowrap before:w-9 before:content-['']"
         >
           <ul className="flex gap-8">
             {menuItems.map((item) => (
@@ -142,21 +135,18 @@ const Nav = () => {
           ease: "easeOut",
           delay: isScrolled ? navDuration : 0,
         }}
-        className="hidden fixed top-5 left-[calc(100vw-79px)] md:flex h-9 w-9 items-center justify-center z-50"
+        className="fixed top-5 left-[calc(100vw-79px)] z-50 hidden h-9 w-9 items-center justify-center md:flex"
       >
         <MenuToggle isOpen={isOpen} onMenuToggle={() => setIsOpen((v) => !v)} />
       </motion.div>
-      <div className="md:hidden fixed top-5 left-[calc(100vw-79px)] flex h-9 w-9 items-center justify-center z-50">
+      <div className="fixed top-5 left-[calc(100vw-79px)] z-50 flex h-9 w-9 items-center justify-center md:hidden">
         <MenuToggle isOpen={isOpen} onMenuToggle={() => setIsOpen((v) => !v)} />
       </div>
       <AnimatePresence>
         {isOpen && (
           <MenuPortal>
             <div className="fixed inset-0 z-40">
-              <div
-                onClick={() => setIsOpen(false)}
-                className="absolute inset-0"
-              />
+              <div onClick={() => setIsOpen(false)} className="absolute inset-0" />
               <Menu onNavClick={() => setIsOpen(false)} />
             </div>
           </MenuPortal>

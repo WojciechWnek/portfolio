@@ -9,10 +9,9 @@ import { Button } from "@/components/ui/button";
 
 const menuItems = [
   { label: "Home", link: "#home" },
+  { label: "About", link: "#about" },
   { label: "Experience", link: "#experience" },
   { label: "Projects", link: "#projects" },
-  { label: "Stack", link: "#stack" },
-  { label: "About", link: "#about" },
   { label: "Contact", link: "#contact" },
 ];
 
@@ -72,10 +71,10 @@ const Menu = ({ onNavClick }: MenuProps) => {
       initial="initial"
       animate="enter"
       exit="exit"
-      className="fixed top-0 right-0 h-screen w-screen md:w-md bg-card text-foreground"
+      className="bg-card text-foreground fixed top-0 right-0 h-screen w-screen md:w-md"
     >
-      <div className="border-box h-full p-20 md:p-25 flex flex-col justify-between">
-        <div className="flex flex-col text-4xl md:text-5xl gap-3">
+      <div className="border-box flex h-full flex-col justify-between p-20 md:p-25">
+        <div className="flex flex-col gap-3 text-4xl md:text-5xl">
           <ul className="flex flex-col gap-8">
             {menuItems.map((item, index) => (
               <motion.li
@@ -86,25 +85,24 @@ const Menu = ({ onNavClick }: MenuProps) => {
                 animate="enter"
                 exit="exit"
               >
-                <NavLink
-                  label={item.label}
-                  link={item.link}
-                  onNavClick={onNavClick}
-                />
+                <NavLink label={item.label} link={item.link} onNavClick={onNavClick} />
               </motion.li>
             ))}
           </ul>
         </div>
-        <ul className="flex justify-between items-center">
+        <motion.ul
+          className="flex items-center justify-between"
+          custom={menuItems.length}
+          variants={slide}
+          initial="initial"
+          animate="enter"
+          exit="exit"
+        >
           {socialItems.map(({ icon: Icon, label, link }) => (
             <li key={label}>
-              <Button
-                size="icon"
-                variant="toggle"
-                className="hover:opacity-70 transition-opacity"
-              >
+              <Button size="icon" variant="toggle" className="transition-opacity hover:opacity-70">
                 <IconLink label={label} link={link}>
-                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
+                  <Icon className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
                 </IconLink>
               </Button>
             </li>
@@ -112,7 +110,7 @@ const Menu = ({ onNavClick }: MenuProps) => {
           <li>
             <DarkModeToggle />
           </li>
-        </ul>
+        </motion.ul>
       </div>
       <Curve />
     </motion.div>

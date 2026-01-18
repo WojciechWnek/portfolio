@@ -44,6 +44,11 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+
+  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
+
+  --breakpoint-xs: 36rem;
+  --breakpoint-2xs: 30rem;
 }
 
 :root {
@@ -127,4 +132,15 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
 }

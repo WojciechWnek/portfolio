@@ -37,28 +37,28 @@ const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   return (
     <div className="w-full font-sans md:px-10" ref={containerRef}>
       <div ref={ref} className="relative mx-auto max-w-7xl pb-20">
-        <h2 className="2xs:px-8 mt-30 px-5 text-3xl leading-tight font-black tracking-tight md:px-5 md:text-4xl xl:text-5xl">
+        <h2 className="2xs:px-8 mt-20 px-5 text-3xl leading-tight font-black tracking-tight md:px-0 md:text-4xl xl:text-5xl">
           Experience & Selected Projects
         </h2>
         {data.map((item, index) => (
           <div key={index} className="flex justify-start pt-10 md:gap-10 md:pt-40">
             <div className="sticky top-40 z-40 flex max-w-xs flex-col items-center self-start md:w-full md:flex-row">
               <div className="absolute left-3 flex h-10 w-10 items-center justify-center rounded-full md:left-3">
-                <div className="h-4 w-4 rounded-full border border-neutral-300 bg-neutral-200 p-2 dark:border-neutral-700 dark:bg-neutral-800" />
+                <div className="bg-card h-4 w-4 rounded-full border p-2" />
               </div>
-              <div className="hidden flex-col gap-2 text-2xl font-bold text-neutral-300 md:flex md:pl-15">
+              <div className="hidden flex-col gap-2 text-2xl font-bold md:flex md:pl-15">
                 <h3>{item.dates}</h3>
-                <h3 className="text-neutral-400">{item.company}</h3>
-                <h3 className="text-neutral-500">{item.role}</h3>
+                <h3 className="text-muted-foreground">{item.company}</h3>
+                <h3 className="text-secondary">{item.role}</h3>
               </div>
             </div>
 
             <div className="relative w-full pr-5 pl-20 md:pl-4">
-              <div className="mb-4 block text-left text-2xl font-bold text-neutral-500 md:hidden dark:text-neutral-500">
+              <div className="mb-4 block text-left text-2xl font-bold md:hidden">
                 <h3>{item.dates}</h3>
                 <div className="text-md flex flex-wrap gap-x-2">
-                  <h3 className="text-neutral-400">{item.company}</h3>
-                  <h3 className="text-neutral-500">{item.role}</h3>
+                  <h3 className="text-muted-foreground">{item.company}</h3>
+                  <h3 className="text-secondary">{item.role}</h3>
                 </div>
               </div>
               <div className="flex flex-col gap-6 xl:flex-row">

@@ -20,7 +20,7 @@ const Projects = ({ projects }: ProjectsEntry) => {
     <ul className="-ml-5 flex flex-col gap-4 xl:ml-0">
       {projects.map((project) => (
         <li key={project.title}>
-          <Card className="gap-1">
+          <Card className="gap-1 shadow-lg">
             <CardHeader>
               <CardTitle>
                 <h4 className="lg:text-lg">{project.title}</h4>
@@ -33,7 +33,7 @@ const Projects = ({ projects }: ProjectsEntry) => {
                   {project.technologies.map((item, index) => (
                     <li
                       key={index}
-                      className="flex h-8 w-8 items-center justify-center rounded-full border bg-black lg:h-10 lg:w-10"
+                      className="bg-background flex h-8 w-8 items-center justify-center rounded-full border lg:h-10 lg:w-10"
                       style={{
                         transform: `translateX(-${5 * index + 2}px)`,
                       }}

@@ -71,13 +71,17 @@ const Experience = () => {
   return (
     <section id="experience">
       <Timeline data={data} />
-      <div className="2xs:px-8 mx-auto flex max-w-7xl flex-col items-center px-5 pt-10 md:px-10">
-        <h2 className="mt-10 mb-20 w-full text-3xl leading-tight font-black tracking-tight md:text-4xl xl:text-5xl">
-          Reference
-        </h2>
-        {REFERENCES.map((item, index) => (
-          <ReferenceCard key={index} data={item} />
-        ))}
+      <div className="w-full font-sans md:px-10">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="2xs:px-8 mt-10 mb-20 w-full px-5 text-3xl leading-tight font-black tracking-tight md:px-0 md:text-4xl xl:text-5xl">
+            Reference
+          </h2>
+          <div className="2xs:px-8 flex flex-col items-center px-5">
+            {REFERENCES.map((item, index) => (
+              <ReferenceCard key={index} data={item} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -19,7 +19,7 @@ type ReferenceCardProps = {
 
 const ReferenceCard = ({ data }: { data: ReferenceCardProps }) => {
   return (
-    <Card className="max-w-2xl xl:max-w-4xl">
+    <Card className="max-w-2xl shadow-lg xl:max-w-4xl">
       <CardContent className="flex gap-10">
         <div className="hidden items-center pb-30 lg:flex">
           <Image

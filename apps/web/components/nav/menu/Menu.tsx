@@ -71,7 +71,7 @@ const Menu = ({ onNavClick }: MenuProps) => {
       initial="initial"
       animate="enter"
       exit="exit"
-      className="bg-card text-foreground fixed top-0 right-0 h-screen w-screen md:w-md"
+      className="bg-card text-foreground fixed top-0 right-0 h-screen w-screen shadow-2xl md:w-md"
     >
       <div className="border-box flex h-full flex-col justify-between p-20 md:p-25">
         <div className="flex flex-col gap-3 text-4xl md:text-5xl">

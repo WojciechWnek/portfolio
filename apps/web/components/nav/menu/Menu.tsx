@@ -3,15 +3,16 @@ import { cubicBezier, motion } from "motion/react";
 import Curve from "./Curve";
 import NavLink from "./NavLink";
 import DarkModeToggle from "./DarkModeToggle";
-import { Github, LinkedinIcon } from "lucide-react";
+import { Github } from "@/components/ui/github";
+import { LinkedIn } from "@/components/ui/linkedin";
 import IconLink from "./IconLink";
 import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 const menuItems = [
   { label: "Home", link: "#home" },
   { label: "About", link: "#about" },
   { label: "Experience", link: "#experience" },
-  { label: "Projects", link: "#projects" },
   { label: "Contact", link: "#contact" },
 ];
 
@@ -22,7 +23,7 @@ const socialItems = [
     link: "https://github.com/WojciechWnek",
   },
   {
-    icon: LinkedinIcon,
+    icon: LinkedIn,
     label: "LinkedIn",
     link: "https://www.linkedin.com/in/wojciech-wnek/",
   },
@@ -100,11 +101,22 @@ const Menu = ({ onNavClick }: MenuProps) => {
         >
           {socialItems.map(({ icon: Icon, label, link }) => (
             <li key={label}>
-              <Button size="icon" variant="toggle" className="transition-opacity hover:opacity-70">
-                <IconLink label={label} link={link}>
-                  <Icon className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
-                </IconLink>
-              </Button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    size="icon"
+                    variant="toggle"
+                    className="transition-opacity hover:opacity-70"
+                  >
+                    <IconLink label={label} link={link}>
+                      <Icon className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
+                    </IconLink>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{label}</p>
+                </TooltipContent>
+              </Tooltip>
             </li>
           ))}
           <li>

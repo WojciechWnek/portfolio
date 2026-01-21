@@ -8,7 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "./Input";
 import { Textarea } from "./Textarea";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "./Form";
-// import { sendEmail } from "@/actions/contact";
+import { sendEmail } from "@/emails/sendEmail";
 import { Button } from "../ui/button";
 
 type FormField = {
@@ -46,9 +46,19 @@ export function ContactForm() {
 
   const onSubmit = (data: z.infer<typeof ContactFormSchema>) => {
     startTransition(() => {
-      // sendEmail(data)
-      //   .then((response) => setEmailStatus(response))
-      //   .catch((error) => setEmailStatus(error));
+      sendEmail(data)
+        .then((response) => {
+          setEmailStatus(response);
+          if (response.success) {
+            form.reset();
+          }
+        })
+        .catch(() => {
+          setEmailStatus({
+            success: false,
+            message: "Server error. Try again later.",
+          });
+        });
     });
   };
 
@@ -98,10 +108,10 @@ export function ContactForm() {
           />
         </div>
         {emailStatus.success === true && (
-          <div className="text-kelly-green flex justify-center text-lg">{emailStatus.message}</div>
+          <div className="text-success flex justify-center font-bold">{emailStatus.message}</div>
         )}
         {emailStatus.success === false && (
-          <div className="text-english-vermillion flex justify-center text-lg">
+          <div className="text-destructive flex justify-center font-bold">
             {emailStatus.message}
           </div>
         )}

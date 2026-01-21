@@ -36,8 +36,8 @@ const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   return (
     <div className="w-full font-sans md:px-10" ref={containerRef}>
-      <div ref={ref} className="relative mx-auto max-w-7xl pb-20">
-        <h2 className="2xs:px-8 mt-20 px-5 text-3xl leading-tight font-black tracking-tight md:px-0 md:text-4xl xl:text-5xl">
+      <div ref={ref} className="relative mx-auto max-w-7xl py-20">
+        <h2 className="2xs:px-8 px-5 text-3xl leading-tight font-black tracking-tight md:px-0 md:text-4xl xl:text-5xl">
           Experience & Selected Projects
         </h2>
         {data.map((item, index) => (

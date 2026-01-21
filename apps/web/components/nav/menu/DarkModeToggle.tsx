@@ -5,6 +5,7 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "../../ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 const DarkModeToggle = () => {
   const [mounted, setMounted] = useState(false);
@@ -14,40 +15,61 @@ const DarkModeToggle = () => {
 
   if (!mounted) {
     return (
-      <Button
-        onClick={() => setTheme("dark")}
-        size="icon"
-        variant="toggle"
-        className="hover:opacity-70 transition-opacity"
-      >
-        <Moon />
-      </Button>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            onClick={() => setTheme("dark")}
+            size="icon"
+            variant="toggle"
+            className="transition-opacity hover:opacity-70"
+          >
+            <Moon />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Switch mode</p>
+        </TooltipContent>
+      </Tooltip>
     );
   }
 
   if (resolvedTheme === "dark") {
     return (
-      <Button
-        onClick={() => setTheme("light")}
-        size="icon"
-        variant="toggle"
-        className="hover:opacity-70 transition-opacity"
-      >
-        <Sun />
-      </Button>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            onClick={() => setTheme("light")}
+            size="icon"
+            variant="toggle"
+            className="transition-opacity hover:opacity-70"
+          >
+            <Sun />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Switch mode</p>
+        </TooltipContent>
+      </Tooltip>
     );
   }
 
   if (resolvedTheme === "light") {
     return (
-      <Button
-        onClick={() => setTheme("dark")}
-        size="icon"
-        variant="toggle"
-        className="hover:opacity-70 transition-opacity"
-      >
-        <Moon />
-      </Button>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            onClick={() => setTheme("dark")}
+            size="icon"
+            variant="toggle"
+            className="transition-opacity hover:opacity-70"
+          >
+            <Moon />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Switch mode</p>
+        </TooltipContent>
+      </Tooltip>
     );
   }
 };

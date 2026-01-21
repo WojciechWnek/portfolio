@@ -71,7 +71,7 @@ const Experience = () => {
   return (
     <section id="experience">
       <Timeline data={data} />
-      <div className="w-full font-sans md:px-10">
+      <div className="w-full pb-20 font-sans md:px-10 lg:pb-40">
         <div className="mx-auto max-w-7xl">
           <h2 className="2xs:px-8 mt-10 mb-20 w-full px-5 text-3xl leading-tight font-black tracking-tight md:px-0 md:text-4xl xl:text-5xl">
             Reference

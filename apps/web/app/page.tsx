@@ -1,6 +1,7 @@
 import AboutAndStack from "@/components/sections/AboutAndStack";
 import Contact from "@/components/sections/Contact";
 import Experience from "@/components/sections/Experience";
+import Footer from "@/components/sections/Footer";
 import Home from "@/components/sections/Home";
 
 export default function Page() {
@@ -10,6 +11,7 @@ export default function Page() {
       <AboutAndStack />
       <Experience />
       <Contact />
+      <Footer />
     </>
   );
 }

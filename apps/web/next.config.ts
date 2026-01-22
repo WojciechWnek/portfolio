@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
   images: {
@@ -7,9 +8,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "media.licdn.com",
       },
-    ],
-    domains: [
-      "api.microlink.io", // Microlink Image Preview
+      {
+        protocol: "https",
+        hostname: "api.microlink.io",
+      },
     ],
   },
 };

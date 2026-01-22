@@ -10,7 +10,7 @@ import NavLink from "./menu/NavLink";
 import MenuPortal from "./menu/MenuPortal";
 
 const menuItems = [
-  { label: "Home", link: "#home" },
+  { label: "Home", link: "s#home" },
   { label: "About", link: "#about" },
   { label: "Experience", link: "#experience" },
   { label: "Contact", link: "#contact" },

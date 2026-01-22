@@ -1,41 +1,27 @@
+import { Html, Head, Body, Container, Text, Heading } from "@react-email/components";
+
 type Props = {
   fullname: string;
   email: string;
   message: string;
 };
 
-const EmailTemplate = ({ fullname, email, message }: Props) => {
+export default function ContactEmail({ fullname, email, message }: Props) {
   return (
-    <main>
-      <div style={{ backgroundColor: "#f6f9fc", padding: "20px" }}>
-        <div
-          style={{
-            backgroundColor: "#ffffff",
-            padding: "24px",
-            borderRadius: "8px",
-            fontFamily: "Arial, sans-serif",
-          }}
-        >
-          <h1>📩 New contact message</h1>
-
-          <p>
+    <Html>
+      <Head />
+      <Body style={{ backgroundColor: "#f6f9fc" }}>
+        <Container style={{ backgroundColor: "#ffffff", padding: 24 }}>
+          <Heading>New contact message</Heading>
+          <Text>
             <strong>Name:</strong> {fullname}
-          </p>
-          <p>
+          </Text>
+          <Text>
             <strong>Email:</strong> {email}
-          </p>
-
-          <hr />
-
-          <p>{message}</p>
-
-          <hr />
-
-          <p style={{ fontSize: "12px", color: "#888" }}>Sent from portfolio contact form</p>
-        </div>
-      </div>
-    </main>
+          </Text>
+          <Text>{message}</Text>
+        </Container>
+      </Body>
+    </Html>
   );
-};
-
-export default EmailTemplate;
+}

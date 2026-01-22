@@ -1,5 +1,5 @@
-import ReferenceCard from "../experience/ReferenceCard";
-import Timeline from "../experience/Timeline";
+import ReferenceCard from "./ReferenceCard";
+import Timeline from "./Timeline";
 
 const Experience = () => {
   const data = [

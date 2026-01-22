@@ -8,11 +8,7 @@ type IconLinkProps = {
   link: string;
 };
 
-const IconLink = ({
-  label,
-  link,
-  children,
-}: PropsWithChildren<IconLinkProps>) => (
+const IconLink = ({ label, link, children }: PropsWithChildren<IconLinkProps>) => (
   <Link href={link} aria-label={label} target="_blank">
     <>{children}</>
   </Link>

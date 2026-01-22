@@ -3,9 +3,10 @@ import { cubicBezier, motion } from "motion/react";
 import Curve from "./Curve";
 import NavLink from "./NavLink";
 import DarkModeToggle from "./DarkModeToggle";
+import IconLink from "@/components/ui/icon-link";
+
 import { Github } from "@/components/ui/github";
 import { LinkedIn } from "@/components/ui/linkedin";
-import IconLink from "./IconLink";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 

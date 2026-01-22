@@ -1,11 +1,11 @@
-import { ContactForm } from "../contact/ContactForm";
-import CopyEmail from "../contact/CopyEmail";
+import { ContactForm } from "./ContactForm";
+import CopyEmail from "./CopyEmail";
 import { Card, CardContent } from "../ui/card";
 import { Github } from "@/components/ui/github";
 import { LinkedIn } from "@/components/ui/linkedin";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
-import { Button } from "../ui/button";
-import IconLink from "../nav/menu/IconLink";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
+import IconLink from "@/components/ui/icon-link";
 
 const socialItems = [
   {

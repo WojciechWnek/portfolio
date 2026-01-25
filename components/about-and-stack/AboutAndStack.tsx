@@ -1,4 +1,4 @@
-import Stack from "../about-and-stack/Stack";
+import Stack from "./Stack";
 
 const AboutAndStack = () => {
   return (

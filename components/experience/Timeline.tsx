@@ -6,6 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import Description from "./Description";
 import Projects, { ProjectEntry } from "./Projects";
 
+import { EXPERIENCE_TITLE } from "@/data/experience";
+
 type TimelineEntry = {
   dates: string;
   company: string;
@@ -38,7 +40,7 @@ const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     <div className="w-full font-sans md:px-10" ref={containerRef}>
       <div ref={ref} className="relative mx-auto max-w-7xl py-20">
         <h2 className="2xs:px-8 px-5 text-3xl leading-tight font-black tracking-tight md:px-0 md:text-4xl xl:text-5xl">
-          Experience & Selected Projects
+          {EXPERIENCE_TITLE}
         </h2>
         {data.map((item, index) => (
           <div key={index} className="flex justify-start pt-10 md:gap-10 md:pt-40">

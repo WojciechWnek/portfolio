@@ -9,12 +9,7 @@ import MenuToggle from "./menu/MenuToggle";
 import NavLink from "./menu/NavLink";
 import MenuPortal from "./menu/MenuPortal";
 
-const menuItems = [
-  { label: "Home", link: "#home" },
-  { label: "About", link: "#about" },
-  { label: "Experience", link: "#experience" },
-  { label: "Contact", link: "#contact" },
-];
+import { MENU } from "@/data/menu";
 
 const navVariants = {
   expanded: {
@@ -112,7 +107,7 @@ const Nav = () => {
           className="relative z-10 flex w-full items-center justify-between gap-8 px-8 text-sm font-medium whitespace-nowrap before:w-9 before:content-['']"
         >
           <ul className="flex gap-8">
-            {menuItems.map((item) => (
+            {MENU.map((item) => (
               <NavLink
                 key={item.label}
                 label={item.label}

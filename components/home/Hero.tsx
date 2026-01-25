@@ -6,7 +6,7 @@ import { FlipWords } from "../ui/flip-words";
 import Link from "next/link";
 import MagicButton from "../ui/magic-button";
 
-const words = ["reliable", "detail-oriented", "experienced"];
+import { HOME } from "@/data/home";
 
 const variants = {
   hidden: { opacity: 0, x: -50 },
@@ -24,7 +24,7 @@ const Hero = () => {
           animate="visible"
           transition={{ delay: 1.2 }}
         >
-          Looking for a{" "}
+          {HOME.title.part1}
         </motion.span>
         <br className="md:hidden" />
         <motion.span
@@ -34,7 +34,7 @@ const Hero = () => {
           transition={{ delay: 1.5 }}
         >
           <FlipWords
-            words={words}
+            words={HOME.title.words}
             duration={4000}
             className="text-5xl font-bold md:text-6xl xl:text-7xl"
           />
@@ -47,7 +47,7 @@ const Hero = () => {
           animate="visible"
           transition={{ delay: 1.8 }}
         >
-          web developer?
+          {HOME.title.part2}
         </motion.span>
       </h1>
 
@@ -59,17 +59,16 @@ const Hero = () => {
         className="mt-10 flex w-full flex-col items-center gap-4 lg:mt-14"
       >
         <p className="text-muted-foreground w-full text-base font-medium md:text-lg xl:text-xl">
-          I work on commercial web applications, focusing on quality, clean code, and long-term
-          maintainability.
+          {HOME.description1}
         </p>
 
         <p className="text-muted-foreground w-full text-sm md:text-base xl:text-lg">
-          Helping teams turn business requirements into stable, production-ready solutions.
+          {HOME.description2}
         </p>
 
         <div className="mt-10">
           <Link href="#experience">
-            <MagicButton>Explore my experience</MagicButton>
+            <MagicButton>{HOME.cta}</MagicButton>
           </Link>
         </div>
       </motion.div>

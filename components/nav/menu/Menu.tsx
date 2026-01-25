@@ -5,30 +5,11 @@ import NavLink from "./NavLink";
 import DarkModeToggle from "./DarkModeToggle";
 import IconLink from "@/components/ui/icon-link";
 
-import { Github } from "@/components/ui/github";
-import { LinkedIn } from "@/components/ui/linkedin";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
-const menuItems = [
-  { label: "Home", link: "#home" },
-  { label: "About", link: "#about" },
-  { label: "Experience", link: "#experience" },
-  { label: "Contact", link: "#contact" },
-];
-
-const socialItems = [
-  {
-    icon: Github,
-    label: "Github",
-    link: "https://github.com/WojciechWnek",
-  },
-  {
-    icon: LinkedIn,
-    label: "LinkedIn",
-    link: "https://www.linkedin.com/in/wojciech-wnek/",
-  },
-];
+import { MENU } from "@/data/menu";
+import { SOCIAL } from "@/data/social";
 
 const menuSlide = {
   initial: { x: "calc(100% + 100px)" },
@@ -78,7 +59,7 @@ const Menu = ({ onNavClick }: MenuProps) => {
       <div className="border-box flex h-full flex-col justify-between p-20 md:p-25">
         <div className="flex flex-col gap-3 text-4xl md:text-5xl">
           <ul className="flex flex-col gap-8">
-            {menuItems.map((item, index) => (
+            {MENU.map((item, index) => (
               <motion.li
                 key={item.label}
                 custom={index}
@@ -94,13 +75,13 @@ const Menu = ({ onNavClick }: MenuProps) => {
         </div>
         <motion.ul
           className="flex items-center justify-between"
-          custom={menuItems.length}
+          custom={MENU.length}
           variants={slide}
           initial="initial"
           animate="enter"
           exit="exit"
         >
-          {socialItems.map(({ icon: Icon, label, link }) => (
+          {SOCIAL.map(({ icon: Icon, label, link }) => (
             <li key={label}>
               <Tooltip>
                 <TooltipTrigger asChild>

@@ -45,7 +45,7 @@ export async function sendEmail(data: z.infer<typeof ContactFormSchema>) {
   try {
     await resend.emails.send({
       from: "Portfolio <wojciechwnek@resend.dev>",
-      to: [process.env.CONTACT_EMAIL!],
+      to: [process.env.NEXT_PUBLIC_CONTACT_EMAIL!],
       subject: `New message from ${fullname}`,
       replyTo: email,
       react: EmailTemplate({

@@ -1,38 +1,22 @@
 import { ContactForm } from "./ContactForm";
 import CopyEmail from "./CopyEmail";
 import { Card, CardContent } from "../ui/card";
-import { Github } from "@/components/ui/github";
-import { LinkedIn } from "@/components/ui/linkedin";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
 import IconLink from "@/components/ui/icon-link";
-
-const socialItems = [
-  {
-    icon: Github,
-    label: "Github",
-    link: "https://github.com/WojciechWnek",
-  },
-  {
-    icon: LinkedIn,
-    label: "LinkedIn",
-    link: "https://www.linkedin.com/in/wojciech-wnek/",
-  },
-];
+import { CONTACT } from "@/data/contact";
+import { SOCIAL } from "@/data/social";
 
 const Contact = () => {
   return (
     <section id="contact" className="2xs:px-8 px-5 py-20 md:px-10">
       <div className="mx-auto flex max-w-7xl flex-col justify-center gap-5">
         <h2 className="text-3xl leading-tight font-black tracking-tight md:text-4xl xl:text-5xl">
-          Let’s work together
+          {CONTACT.title}
         </h2>
         <div className="mx-auto flex flex-col justify-between gap-15 md:mx-0 md:flex-row">
           <div className="mt-15 flex flex-col gap-8 md:w-lg">
-            <p className="text-lg">
-              I’m open to full-time roles, freelance projects, and long-term collaboration. Feel
-              free to reach out using the form or directly by email.
-            </p>
+            <p className="text-lg">{CONTACT.description}</p>
             <div className="flex flex-col gap-4 md:items-start">
               <p className="font-light">Prefer email?</p>
               <CopyEmail />
@@ -40,7 +24,7 @@ const Contact = () => {
             <div className="flex flex-col items-start gap-4">
               <p className="font-light">Social</p>
               <div className="xs:justify-start flex w-full justify-center gap-4">
-                {socialItems.map(({ icon: Icon, label, link }) => (
+                {SOCIAL.map(({ icon: Icon, label, link }) => (
                   <Tooltip key={label}>
                     <TooltipTrigger asChild>
                       <Button

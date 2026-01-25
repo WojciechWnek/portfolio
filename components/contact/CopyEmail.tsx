@@ -12,6 +12,7 @@ const CopyEmail = () => {
     const text = "wownek@gmail.com";
     navigator.clipboard.writeText(text);
     setCopied(true);
+    window.location.href = `mailto:${text}`;
   };
 
   return (

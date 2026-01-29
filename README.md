@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wojciech Wnek – Portfolio Website
 
-## Getting Started
+Personal portfolio website built with **Next.js**, showcasing my experience, skills, and selected commercial projects.  
+The site focuses on performance, accessibility, clean architecture, and long-term maintainability.
 
-First, run the development server:
+🌐 Live: https://wojciechwnek.vercel.app/
+
+---
+
+## ✨ Features
+
+- Modern, responsive portfolio layout
+- Smooth animations using **Framer Motion**
+- Accessible UI components (**shadcn/ui**, WCAG-friendly)
+- Contact form with:
+  - **Zod** schema validation
+  - **React Hook Form** for state handling
+  - Server-side rate limiting to prevent multiple submissions from the same IP
+- Clean, scalable project structure
+- SEO-friendly and optimized for performance
+
+---
+
+## 🧱 Tech Stack
+
+### Frontend
+
+- **Next.js** (App Router)
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **Framer Motion**
+- **shadcn/ui**
+
+### Forms & Validation
+
+- **React Hook Form**
+- **Zod**
+
+### Infrastructure
+
+- **Vercel** (hosting & deployment)
+- Server Actions / API routes for form handling
+- Rate limiting to protect the contact form from spam
+
+---
+
+## 📄 Pages
+
+- **Home** – Short introduction and value proposition
+- **About** – Background, skills, and technical focus
+- **Experience** – Professional experience and selected projects
+- **Contact** – Contact form with validation and rate limiting
+
+---
+
+## 📨 Contact Form Details
+
+The contact form is built with production-grade patterns:
+
+- Client-side validation using **Zod**
+- Controlled form handling via **React Hook Form**
+- Server-side submission handling
+- IP-based rate limiting to prevent email spam and abuse
+- Graceful error and success feedback for users
+
+---
+
+## 🛠️ Local Development
+
+### Prerequisites
+
+- Node.js 18+
+- npm / pnpm / yarn
+
+### Setup
 
 ```bash
+git clone https://github.com/WojciechWnek/portfolio.git
+cd portfolio
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open http://localhost:3000 in your browser.

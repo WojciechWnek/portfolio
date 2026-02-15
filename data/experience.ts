@@ -59,8 +59,7 @@ export const REFERENCES = [
     name: "Michał Skałkowski",
     role: "COO",
     company: "Profil Software",
-    image:
-      "https://media.licdn.com/dms/image/v2/C4E03AQGuosWj3m0StA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1632823870907?e=1770249600&v=beta&t=TJDv00KbPO9hjjUM5AKgFcl4ymrhUxtC9vOunyIQW4U",
+    image: "/MichalSkalkowski.png",
     references:
       "I had the pleasure of working with Wojciech at Profil Software, where I serve as COO. Wojciech started with us as an intern and quickly grew into the role of Frontend Developer, staying with the company for over three and a half years. \n\nFrom the very beginning, he stood out as someone who learns fast and adapts quickly to new challenges. I often received feedback from our tech leads highlighting the consistently high quality of his code. \n\nWhat made Wojciech truly exceptional was not only his technical skills but also his soft skills. He communicates seamlessly with both team members and clients, and he was always eager to help others. His ability to quickly integrate into new projects and teams was invaluable. \n\nI am very grateful for the years Wojciech spent with us and truly appreciated his contribution to our company. It was with genuine regret that I learned about his decision to move on due to relocation. Any team would be lucky to have him.",
   },

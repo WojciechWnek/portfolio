@@ -21,15 +21,16 @@ const getClientIp = async () => {
 };
 
 export async function sendEmail(data: z.infer<typeof ContactFormSchema>) {
-  const ip = await getClientIp();
-  const { success } = await ratelimit.limit(ip);
+  // Rate limiting logic (commented out for now)
+  // const ip = await getClientIp();
+  // const { success } = await ratelimit.limit(ip);
 
-  if (!success) {
-    return {
-      success: false,
-      message: "Too many messages. Please try again later.",
-    };
-  }
+  // if (!success) {
+  //   return {
+  //     success: false,
+  //     message: "Too many messages. Please try again later.",
+  //   };
+  // }
 
   const parsed = ContactFormSchema.safeParse(data);
 

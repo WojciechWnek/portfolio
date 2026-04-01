@@ -2,7 +2,7 @@ export const EXPERIENCE_TITLE = "Experience & Selected Projects";
 
 export const EXPERIENCE = [
   {
-    dates: "Aug 2022 - Sep 2025",
+    dates: "Aug 2022 - Present",
     company: "Profil Software",
     role: "Frontend Developer",
     description: [

@@ -1,9 +1,13 @@
 export const ABOUT = {
   title: "About Me",
   description: [
-    "I’m a frontend-focused software engineer with 3+ years of experience building production web applications for real products and teams.",
+    "I’m a frontend-focused software engineer with 4+ years of experience building production web applications for real products and teams.",
     "I focus on scalable, maintainable interfaces, clean architecture, performance, and long-term product quality.",
   ],
+  exp: {
+    years: "4+",
+    title: "Years of Experience",
+  },
 };
 
 export const SKILLS = [

@@ -13,7 +13,7 @@ const ReferenceCard = ({ data }: { data: ReferenceCardProps }) => {
   return (
     <Card className="max-w-2xl shadow-lg xl:max-w-4xl">
       <CardContent className="flex gap-10">
-        <div className="hidden items-center pb-30 lg:flex">
+        {/* <div className="hidden items-center pb-30 lg:flex">
           <Image
             width={100}
             height={100}
@@ -21,7 +21,7 @@ const ReferenceCard = ({ data }: { data: ReferenceCardProps }) => {
             alt={data.name}
             className="min-w-32 rounded-full xl:min-w-40"
           />
-        </div>
+        </div> */}
         <div className="flex flex-col gap-8">
           <div className="whitespace-pre-line">{data.references}</div>
           <div className="flex flex-col gap-1">

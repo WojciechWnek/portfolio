@@ -7,8 +7,6 @@ import { headers } from "next/headers";
 import { ratelimit } from "@/lib/rate-limit";
 import EmailTemplate from "@/emails/EmailTemplate";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const ContactFormSchema = z.object({
   fullname: z.string().min(1),
   email: z.email().min(1),
@@ -31,6 +29,18 @@ export async function sendEmail(data: z.infer<typeof ContactFormSchema>) {
   //     message: "Too many messages. Please try again later.",
   //   };
   // }
+
+  const apiKey = process.env.RESEND_API_KEY;
+
+  if (!apiKey) {
+    console.error("Missing RESEND_API_KEY environment variable");
+    return {
+      success: false,
+      message: "Server configuration error. Please try again later.",
+    };
+  }
+
+  const resend = new Resend(apiKey);
 
   const parsed = ContactFormSchema.safeParse(data);
 
